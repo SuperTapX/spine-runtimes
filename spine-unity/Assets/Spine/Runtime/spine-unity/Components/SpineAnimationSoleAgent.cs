@@ -13,6 +13,13 @@ namespace Spine.Unity
     [ExecuteAlways]
     public class SpineAnimationSoleAgent : MonoBehaviour
     {
+        private void Awake()
+        {
+#if UNITY_EDITOR
+            SpineAnimationAgentManager.isPlaying = Application.isPlaying;
+#endif
+        }
+
         private void Start()
         {
             var animations = FindObjectsByType<SkeletonAnimation>(FindObjectsSortMode.None);
